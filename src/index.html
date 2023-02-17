@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Место Россия</title>
+  </head>
+  <body class="body">
+    <!-- HEADER -->
+    <header class="header">
+      <img
+        class="header__logo"
+        src="<%=require('./images/header/logo_mesto.svg')%>"
+        alt="Логотип Mesto-Russia"
+      />
+    </header>
+    <!-- CONTENT -->
+    <main>
+      <!-- PROFILE -->
+      <section class="profile">
+        <div class="profile__avatat-container">
+          <button
+            type="button"
+            name="updateAvaButton"
+            class="profile__updateAvaButton"
+          ></button>
+          <img src="" alt="Аватар" class="profile__avatar" />
+        </div>
+        <div class="profile__info">
+          <div class="profile__about-myself">
+            <h1 class="profile__name"></h1>
+            <button
+              type="button"
+              name="edit_profile"
+              class="profile__edit-button"
+            ></button>
+          </div>
+          <p class="profile__profession"></p>
+        </div>
+        <button
+          type="button"
+          name="add_photo"
+          class="profile__add-button"
+        ></button>
+      </section>
+      <!-- ФОТОКАРТОЧКИ -->
+      <section aria-label="Карточки мест">
+        <ul class="cards">
+          <template id="card">
+            <li class="card">
+              <img class="card__image" src="" alt="" />
+              <div class="card__bottom">
+                <h2 class="card__caption"></h2>
+                <div class="card__like-cont">
+                  <button type="button" name="like" class="card__like"></button>
+                  <p class="card__like-count"></p>
+                </div>
+              </div>
+            </li>
+          </template>
+          <template id="mini-bin">
+            <button
+              type="button"
+              name="mini-bin"
+              class="card__mini-bin"
+            ></button>
+          </template>
+        </ul>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+    <!-- POPUP РЕДАКТИРОВАНИЕ ПРОФИЛЯ >> -->
+    <div class="popup popup_edit-profile">
+      <div class="popup__body">
+        <button
+          type="button"
+          name="button_close-edit-profile"
+          class="popup__close"
+        ></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form" name="popup-form-edit-profile" novalidate>
+          <input
+            id="name-input"
+            class="popup__input"
+            type="text"
+            placeholder="Имя"
+            pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+            name="name"
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span class="name-input--error popup__input-error"></span>
+          <input
+            id="profession-input"
+            class="popup__input"
+            type="text"
+            placeholder="Занятие"
+            pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+            name="profession"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span class="profession-input--error popup__input-error"></span>
+          <button class="popup__button" type="submit" name="save_profile">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- POPUP Добавления карточки >> -->
+    <div class="popup popup_add-card">
+      <div class="popup__body">
+        <button
+          type="button"
+          name="button_close-popup_add-card"
+          class="popup__close"
+        ></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="popup__form-addCard">
+          <input
+            id="name-card-input"
+            class="popup__input"
+            type="text"
+            name="name_card"
+            placeholder="Название"
+            minlength="2"
+            maxlength="30"
+            pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+            required
+          />
+          <span class="name-card-input--error popup__input-error"></span>
+          <input
+            id="link-img-input"
+            class="popup__input"
+            type="url"
+            name="link_img"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span class="link-img-input--error popup__input-error"></span>
+          <button class="popup__button" type="submit" name="add_card">
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- POPUP Открытия картинки-->
+    <div class="popup popup_image">
+      <figure class="popup__figure">
+        <button
+          type="button"
+          name="button_close-image"
+          class="popup__close"
+        ></button>
+        <img src="" alt="" class="popup__img" />
+        <figcaption class="popup__img-caption"></figcaption>
+      </figure>
+    </div>
+    <!-- POPUP Открытия обновления автара-->
+    <div class="popup popup_updateAva">
+      <div class="popup__body">
+        <button
+          type="button"
+          name="button_close-popup"
+          class="popup__close"
+        ></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="popup__updateAva">
+          <input
+            id="link-img-input"
+            class="popup__input"
+            type="url"
+            name="link_img"
+            placeholder="Cсылка на новый аватар"
+            required
+
+          />
+          <span class="link-img-input--error popup__input-error"></span>
+          <button class="popup__button" type="submit" name="saveAvaButton">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

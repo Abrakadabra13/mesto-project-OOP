@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/millennial404/mesto-project.git"
+    "url": "git+https://github.com/Abrakadabra13/mestoOOP.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/millennial404/mesto-project/issues"
+    "url": "https://github.com/Abrakadabra13/mestoOOP/issues"
   },
-  "homepage": "https://github.com/millennial404/mesto-project#readme",
+  "homepage": "https://github.com/Abrakadabra13/mestoOOPt#readme",
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
